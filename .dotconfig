@@ -4,3 +4,5 @@ DOT_BUILD_SOLUTIONS=Janda.Parsers.DateTime
 DOT_PUBLISH_RUNTIMES=win-x64
 # Add publish arguments e.g. -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true
 DOT_PUBLISH_ARGUMENTS=-c Release
+
+DOT_PUBLISH_PROJECTS=Janda.Parsers.DateTime
