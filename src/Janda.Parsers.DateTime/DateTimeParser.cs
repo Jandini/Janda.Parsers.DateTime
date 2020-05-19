@@ -2,11 +2,8 @@
 
 namespace Janda.Parsers
 {
-    public class DateTimeParser
+    internal class DateTimeParser
     {
-        public static DateTime CDateTimeEpoch = new DateTime(621355968000000000, DateTimeKind.Utc);
-        public static DateTime HFSDateTimeEpoch = new DateTime(600527520000000000, DateTimeKind.Utc);
-
         private readonly byte[] _buffer;
         private readonly int _index;
 
@@ -22,24 +19,25 @@ namespace Janda.Parsers
             _index = 0;
         }
 
-        public DateTime AsCDateTime { get => _buffer.AsCDateTime(_index); }
-        public DateTime AsHFSFileTime { get => _buffer.AsHFSFileTime(_index); }
+        public DateTime AsCDateTime { get => _buffer.CDateToDateTime(_index); }
+        public DateTime AsHFSFileTime { get => _buffer.HFSDateToDateTime(_index); }
 
-        public DateTimeParser FromCDateTime(int offset, out DateTime result)
+
+        public DateTimeParser CDate(int offset, out DateTime result)
         {
-            result = _buffer.AsCDateTime(_index + offset);
+            result = _buffer.CDateToDateTime(_index + offset);
             return this;
         }
 
-        public DateTimeParser FromAsHFSFileTime(int offset, out DateTime result)
+        public DateTimeParser HFSDate(int offset, out DateTime result)
         {
-            result = _buffer.AsHFSFileTime(_index + offset);
+            result = _buffer.HFSDateToDateTime(_index + offset);
             return this;
         }
 
-        public DateTimeParser FromCDateTimeBigEndian(int offset, out DateTime result)
+        public DateTimeParser SwapCDate(int offset, out DateTime result)
         {
-            result = _buffer.AsCDateTimeBE(_index + offset);
+            result = _buffer.SwapCDateToDateTime(_index + offset);
             return this;
         }
     }

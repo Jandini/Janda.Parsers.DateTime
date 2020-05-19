@@ -2,7 +2,7 @@
 
 namespace Janda.Parsers
 {
-    public static class ByteArrayParserExtensions
+    internal static class ByteArrayParserExtensions
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTimeParser ParseAt(this byte[] buffer, int index)
