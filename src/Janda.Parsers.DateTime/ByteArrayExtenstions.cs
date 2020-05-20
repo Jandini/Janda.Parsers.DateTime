@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers.Binary;
 using System.Runtime.CompilerServices;
 
 namespace Janda.Parsers
@@ -11,33 +12,33 @@ namespace Janda.Parsers
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadAsHFSDateAsDateTime(this byte[] buffer, int index)
         {
-            return _hfsdateEpoch.AddSeconds((uint)((buffer[index++] << 24) | (buffer[index++] << 16) | (buffer[index++] << 8) | buffer[index++]));
+            return _hfsdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32LittleEndian(buffer.AsSpan().Slice(index)));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadAsCDateToDateTime(this byte[] buffer, int index)
         {
-            return _cdateEpoch.AddSeconds(BitConverter.ToUInt32(buffer, index));
+            return _cdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32LittleEndian(buffer.AsSpan().Slice(index)));
         }
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadAsCDateToDateTime(this byte[] buffer)
         {
-            return _cdateEpoch.AddSeconds(BitConverter.ToUInt32(buffer));
+            return _cdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32LittleEndian(buffer));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadAsBigEndianCDateToDateTime(this byte[] buffer, int index)
         {
-            return _cdateEpoch.AddSeconds((uint)((buffer[index++] << 24) | (buffer[index++] << 16) | (buffer[index++] << 8) | buffer[index++]));
+            return _cdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan().Slice(index)));
         }
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadAsBigEndianCDateToDateTime(this byte[] buffer)
         {
-            return _cdateEpoch.AddSeconds((uint)((buffer[0] << 24) | (buffer[1] << 16) | (buffer[2] << 8) | buffer[3]));
+            return _cdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32BigEndian(buffer));            
         }
     }
 }

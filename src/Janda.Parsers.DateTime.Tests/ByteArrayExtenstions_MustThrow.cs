@@ -10,7 +10,7 @@ namespace Janda.Parsers.Tests
         {
             const int EMPTY_ARRAY_SIZE = 0;
             var buffer = new byte[EMPTY_ARRAY_SIZE];
-            Assert.Throws<IndexOutOfRangeException>(()=>buffer.ReadAsBigEndianCDateToDateTime());
+            Assert.Throws<ArgumentOutOfRangeException>(()=>buffer.ReadAsBigEndianCDateToDateTime());
         }
 
 
@@ -19,7 +19,7 @@ namespace Janda.Parsers.Tests
         {
             const int C_DATE_SIZE = 4;
             var buffer = new byte[C_DATE_SIZE - 1];
-            Assert.Throws<IndexOutOfRangeException>(() => buffer.ReadAsBigEndianCDateToDateTime());
+            Assert.Throws<ArgumentOutOfRangeException>(() => buffer.ReadAsBigEndianCDateToDateTime());
         }
 
 
@@ -29,7 +29,7 @@ namespace Janda.Parsers.Tests
             const int C_DATE_SIZE = 4;
             const int NEGATIVE_INDEX = -1;
             var buffer = new byte[C_DATE_SIZE];
-            Assert.Throws<IndexOutOfRangeException>(() => buffer.ReadAsBigEndianCDateToDateTime(NEGATIVE_INDEX));
+            Assert.Throws<ArgumentOutOfRangeException>(() => buffer.ReadAsBigEndianCDateToDateTime(NEGATIVE_INDEX));
         }
 
 
@@ -39,7 +39,7 @@ namespace Janda.Parsers.Tests
             const int C_DATE_SIZE = 4;
             const int OUTSIDE_OF_RANGE_INDEX = C_DATE_SIZE + 1;
             var buffer = new byte[C_DATE_SIZE];
-            Assert.Throws<IndexOutOfRangeException>(() => buffer.ReadAsBigEndianCDateToDateTime(OUTSIDE_OF_RANGE_INDEX));
+            Assert.Throws<ArgumentOutOfRangeException>(() => buffer.ReadAsBigEndianCDateToDateTime(OUTSIDE_OF_RANGE_INDEX));
         }
     }
 }
