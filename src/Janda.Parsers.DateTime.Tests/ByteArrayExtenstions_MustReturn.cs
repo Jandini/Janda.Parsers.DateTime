@@ -15,7 +15,7 @@ namespace Janda.Parsers.Tests
 
             var buffer = new byte[HFS_DATE_SIZE];
 
-            Assert.Equal(buffer.ReadAsHFSDateAsDateTime(INDEX_ZERO), HFS_DATE_EPOCH);
+            Assert.Equal(buffer.ReadAsHFSDateToDateTime(INDEX_ZERO), HFS_DATE_EPOCH);
         }
 
         [Fact]
