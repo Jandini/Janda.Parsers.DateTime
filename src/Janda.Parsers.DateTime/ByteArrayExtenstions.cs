@@ -17,6 +17,12 @@ namespace Janda.Parsers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DateTime ReadAsBigEndianHFSDateToDateTime(this byte[] buffer, int index)
+        {
+            return _hfsdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan().Slice(index)));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadAsCDateToDateTime(this byte[] buffer, int index)
         {
             return _cdateEpoch.AddSeconds(BinaryPrimitives.ReadUInt32LittleEndian(buffer.AsSpan().Slice(index)));
