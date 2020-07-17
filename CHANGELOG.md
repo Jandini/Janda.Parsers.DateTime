@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](http://nas/matt/Janda.Parsers.DateTime/compare/1.2.0...1.3.0) (2020-07-17)
+
+
+### Features
+
+* Add dot packages ([0cec779](http://nas/matt/Janda.Parsers.DateTime/commit/0cec7793bd5bf8b56187886eb2a8769a7a9316e1))
+* Add jenkins shared library to jenkins file ([f6a26bc](http://nas/matt/Janda.Parsers.DateTime/commit/f6a26bc34fb113339ee80aa0abc38669d1993424))
+* Bump dot packages version to 0.3.0 ([00fedde](http://nas/matt/Janda.Parsers.DateTime/commit/00feddeaf32aec556cf67c9472a70bbb27ceeaf3))
+
 ## [1.2.0](http://nas/matt/Janda.Parsers.DateTime/compare/1.1.0...1.2.0) (2020-06-27)
 
 ## 1.1.0 (2020-06-07)
